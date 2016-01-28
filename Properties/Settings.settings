@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="記帳程式_家用版.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="first" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=MAKOTO\MAKOTO;database=Account_book;uid=sa;pwd=;</Value>
+    </Setting>
+    <Setting Name="ConnectToClassRoom" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=A20612\SQLSERVER2014;database=Account_book;uid=sa;pwd=;</Value>
+    </Setting>
+    <Setting Name="ConnectToHome" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=MAKOTO\MAKOTO;database=Account_book;uid=sa;pwd=;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet_BS" targetNamespace="http://tempuri.org/DataSet_BS.xsd" xmlns:mstns="http://tempuri.org/DataSet_BS.xsd" xmlns="http://tempuri.org/DataSet_BS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet_BS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet_BS" msprop:Generator_UserDSName="DataSet_BS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dt_Asset" msprop:Generator_TableClassName="dt_AssetDataTable" msprop:Generator_TableVarName="tabledt_Asset" msprop:Generator_RowChangedName="dt_AssetRowChanged" msprop:Generator_TablePropName="dt_Asset" msprop:Generator_RowDeletingName="dt_AssetRowDeleting" msprop:Generator_RowChangingName="dt_AssetRowChanging" msprop:Generator_RowEvHandlerName="dt_AssetRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_AssetRowDeleted" msprop:Generator_RowClassName="dt_AssetRow" msprop:Generator_UserTableName="dt_Asset" msprop:Generator_RowEvArgName="dt_AssetRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sub_name" msprop:Generator_ColumnVarNameInTable="columnsub_name" msprop:Generator_ColumnPropNameInRow="sub_name" msprop:Generator_ColumnPropNameInTable="sub_nameColumn" msprop:Generator_UserColumnName="sub_name" type="xs:string" minOccurs="0" />
+              <xs:element name="sub_type" msprop:Generator_ColumnVarNameInTable="columnsub_type" msprop:Generator_ColumnPropNameInRow="sub_type" msprop:Generator_ColumnPropNameInTable="sub_typeColumn" msprop:Generator_UserColumnName="sub_type" type="xs:string" minOccurs="0" />
+              <xs:element name="balance" msprop:Generator_ColumnVarNameInTable="columnbalance" msprop:Generator_ColumnPropNameInRow="balance" msprop:Generator_ColumnPropNameInTable="balanceColumn" msprop:Generator_UserColumnName="balance" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dt_Liabilities" msprop:Generator_TableClassName="dt_LiabilitiesDataTable" msprop:Generator_TableVarName="tabledt_Liabilities" msprop:Generator_RowChangedName="dt_LiabilitiesRowChanged" msprop:Generator_TablePropName="dt_Liabilities" msprop:Generator_RowDeletingName="dt_LiabilitiesRowDeleting" msprop:Generator_RowChangingName="dt_LiabilitiesRowChanging" msprop:Generator_RowEvHandlerName="dt_LiabilitiesRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_LiabilitiesRowDeleted" msprop:Generator_RowClassName="dt_LiabilitiesRow" msprop:Generator_UserTableName="dt_Liabilities" msprop:Generator_RowEvArgName="dt_LiabilitiesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sub_name" msprop:Generator_ColumnVarNameInTable="columnsub_name" msprop:Generator_ColumnPropNameInRow="sub_name" msprop:Generator_ColumnPropNameInTable="sub_nameColumn" msprop:Generator_UserColumnName="sub_name" type="xs:string" minOccurs="0" />
+              <xs:element name="sub_type" msprop:Generator_ColumnVarNameInTable="columnsub_type" msprop:Generator_ColumnPropNameInRow="sub_type" msprop:Generator_ColumnPropNameInTable="sub_typeColumn" msprop:Generator_UserColumnName="sub_type" type="xs:string" minOccurs="0" />
+              <xs:element name="balance" msprop:Generator_ColumnVarNameInTable="columnbalance" msprop:Generator_ColumnPropNameInRow="balance" msprop:Generator_ColumnPropNameInTable="balanceColumn" msprop:Generator_UserColumnName="balance" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dt_Net" msprop:Generator_TableClassName="dt_NetDataTable" msprop:Generator_TableVarName="tabledt_Net" msprop:Generator_RowChangedName="dt_NetRowChanged" msprop:Generator_TablePropName="dt_Net" msprop:Generator_RowDeletingName="dt_NetRowDeleting" msprop:Generator_RowChangingName="dt_NetRowChanging" msprop:Generator_RowEvHandlerName="dt_NetRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_NetRowDeleted" msprop:Generator_RowClassName="dt_NetRow" msprop:Generator_UserTableName="dt_Net" msprop:Generator_RowEvArgName="dt_NetRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sub_name" msprop:Generator_ColumnVarNameInTable="columnsub_name" msprop:Generator_ColumnPropNameInRow="sub_name" msprop:Generator_ColumnPropNameInTable="sub_nameColumn" msprop:Generator_UserColumnName="sub_name" type="xs:string" minOccurs="0" />
+              <xs:element name="sub_type" msprop:Generator_ColumnVarNameInTable="columnsub_type" msprop:Generator_ColumnPropNameInRow="sub_type" msprop:Generator_ColumnPropNameInTable="sub_typeColumn" msprop:Generator_UserColumnName="sub_type" type="xs:string" minOccurs="0" />
+              <xs:element name="balance" msprop:Generator_ColumnVarNameInTable="columnbalance" msprop:Generator_ColumnPropNameInRow="balance" msprop:Generator_ColumnPropNameInTable="balanceColumn" msprop:Generator_UserColumnName="balance" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dt_income" msprop:Generator_TableClassName="dt_incomeDataTable" msprop:Generator_TableVarName="tabledt_income" msprop:Generator_RowChangedName="dt_incomeRowChanged" msprop:Generator_TablePropName="dt_income" msprop:Generator_RowDeletingName="dt_incomeRowDeleting" msprop:Generator_RowChangingName="dt_incomeRowChanging" msprop:Generator_RowEvHandlerName="dt_incomeRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_incomeRowDeleted" msprop:Generator_RowClassName="dt_incomeRow" msprop:Generator_UserTableName="dt_income" msprop:Generator_RowEvArgName="dt_incomeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sub_name" msprop:Generator_ColumnVarNameInTable="columnsub_name" msprop:Generator_ColumnPropNameInRow="sub_name" msprop:Generator_ColumnPropNameInTable="sub_nameColumn" msprop:Generator_UserColumnName="sub_name" type="xs:string" minOccurs="0" />
+              <xs:element name="sub_type" msprop:Generator_ColumnVarNameInTable="columnsub_type" msprop:Generator_ColumnPropNameInRow="sub_type" msprop:Generator_ColumnPropNameInTable="sub_typeColumn" msprop:Generator_UserColumnName="sub_type" type="xs:string" minOccurs="0" />
+              <xs:element name="balance" msprop:Generator_ColumnVarNameInTable="columnbalance" msprop:Generator_ColumnPropNameInRow="balance" msprop:Generator_ColumnPropNameInTable="balanceColumn" msprop:Generator_UserColumnName="balance" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dt_loss" msprop:Generator_TableClassName="dt_lossDataTable" msprop:Generator_TableVarName="tabledt_loss" msprop:Generator_RowChangedName="dt_lossRowChanged" msprop:Generator_TablePropName="dt_loss" msprop:Generator_RowDeletingName="dt_lossRowDeleting" msprop:Generator_RowChangingName="dt_lossRowChanging" msprop:Generator_RowEvHandlerName="dt_lossRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_lossRowDeleted" msprop:Generator_RowClassName="dt_lossRow" msprop:Generator_UserTableName="dt_loss" msprop:Generator_RowEvArgName="dt_lossRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sub_name" msprop:Generator_ColumnVarNameInTable="columnsub_name" msprop:Generator_ColumnPropNameInRow="sub_name" msprop:Generator_ColumnPropNameInTable="sub_nameColumn" msprop:Generator_UserColumnName="sub_name" type="xs:string" minOccurs="0" />
+              <xs:element name="sub_type" msprop:Generator_ColumnVarNameInTable="columnsub_type" msprop:Generator_ColumnPropNameInRow="sub_type" msprop:Generator_ColumnPropNameInTable="sub_typeColumn" msprop:Generator_UserColumnName="sub_type" type="xs:string" minOccurs="0" />
+              <xs:element name="balance" msprop:Generator_ColumnVarNameInTable="columnbalance" msprop:Generator_ColumnPropNameInRow="balance" msprop:Generator_ColumnPropNameInTable="balanceColumn" msprop:Generator_UserColumnName="balance" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dt_username" msprop:Generator_TableClassName="dt_usernameDataTable" msprop:Generator_TableVarName="tabledt_username" msprop:Generator_TablePropName="dt_username" msprop:Generator_RowDeletingName="dt_usernameRowDeleting" msprop:Generator_RowChangingName="dt_usernameRowChanging" msprop:Generator_RowEvHandlerName="dt_usernameRowChangeEventHandler" msprop:Generator_RowDeletedName="dt_usernameRowDeleted" msprop:Generator_UserTableName="dt_username" msprop:Generator_RowChangedName="dt_usernameRowChanged" msprop:Generator_RowEvArgName="dt_usernameRowChangeEvent" msprop:Generator_RowClassName="dt_usernameRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
