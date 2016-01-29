@@ -121,3 +121,9 @@ D:\程式設計\C#\3_記帳程式\記帳程式(家用版)\obj\Debug\RdlCompile.c
 D:\程式設計\C#\3_記帳程式\記帳程式(家用版)\obj\Debug\RdlCompile.compiled
 D:\程式設計\C#\3_記帳程式\記帳程式(家用版)\obj\Debug\記帳程式(家用版).exe.manifest
 D:\程式設計\C#\3_記帳程式\記帳程式(家用版)\obj\Debug\記帳程式(家用版).application
+D:\billing-WindowsForm\bin\Debug\記帳程式(家用版).exe.config
+D:\billing-WindowsForm\obj\Debug\記帳程式(家用版).exe
+D:\billing-WindowsForm\obj\Debug\記帳程式(家用版).pdb
+D:\GitHub\billing-WindowsForm\bin\Debug\記帳程式(家用版).exe.config
+D:\GitHub\billing-WindowsForm\obj\Debug\記帳程式(家用版).exe
+D:\GitHub\billing-WindowsForm\obj\Debug\記帳程式(家用版).pdb

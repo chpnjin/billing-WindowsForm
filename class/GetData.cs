@@ -20,7 +20,7 @@ namespace AccountBook
             ConnectSQL.ParametersAddWithValue("@id", id, true);
             ConnectSQL.ParametersAddWithValue("@password", password, false);
             ConnectSQL.ParametersAddWithValue("@avl", "Y", false);
-            object[] username_ = ConnectSQL.getAry("SELECT name FROM [user] WHERE id = @id AND password = @password AND avl = @avl");
+            object[] username_ = ConnectSQL.getAry("SELECT name FROM [users] WHERE id = @id AND password = @password AND avl = @avl");
             if (username_.Length == 0) { return ""; }
             string username = username_[0].ToString();
             return username;
