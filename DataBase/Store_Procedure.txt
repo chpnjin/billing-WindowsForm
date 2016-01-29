@@ -1,0 +1,52 @@
+-- =============================================
+-- Author:		MAKOTO
+-- Create date: 2015/11/05
+-- Description:	依照輸入時間區間顯示各科目期間餘額
+-- =============================================
+ALTER PROCEDURE [dbo].[show_total]
+@start date = '0001-01-01', --開始日期
+@end date =   '9999-12-31' --結束日期
+AS
+BEGIN
+	SELECT  sub_name, sub_type, SUM(sum_D) AS sum_D, SUM(sum_C) AS sum_C
+FROM      (SELECT  dbo.Subjects.sub_name, dbo.Subjects.sub_type, SUM(dbo.GL.money) AS sum_D, 0 AS sum_C
+           FROM     GL INNER JOIN Subjects ON Subjects.sub_name = GL.sub_name
+           WHERE    GL.Tx_date >= @start AND  GL.Tx_date <= @end AND (GL.DC = '借') OR (GL.DC IS NULL)
+           GROUP BY dbo.Subjects.sub_name, dbo.Subjects.sub_type
+                   UNION ALL
+           SELECT  Subjects.sub_name, Subjects.sub_type, 0 AS sum_D, SUM(ISNULL(GL.money, 0)) AS sum_C
+           FROM    dbo.GL INNER JOIN dbo.Subjects ON Subjects.sub_name = GL.sub_name
+           WHERE   GL.Tx_date >= @start AND  GL.Tx_date <= @end AND (GL.DC = '貸') OR (GL.DC IS NULL)
+           GROUP BY Subjects.sub_name, Subjects.sub_type) AS SUBQUERY
+GROUP BY sub_name, sub_type
+END
+
+-- =============================================
+-- Author:		MAKOTO
+-- Create date: 2015/11/7
+-- Description:	初始科目與金額設定
+-- =============================================
+ALTER PROCEDURE [dbo].[first_use]
+@Tx_date date,    --交易日期
+@sub_name nvarchar(50),       --科目名稱
+@sub_type nvarchar(50),       --科目類型
+@money decimal(18,0)          --初始金額
+
+AS
+BEGIN
+DECLARE @Tx_no varchar(50)   --科目代碼
+DECLARE @lot nvarchar(50) --批號
+DECLARE @DC nvarchar(50)     --借貸
+DECLARE @remark nvarchar(50) --交易說明
+
+--設定交易序號與交易日期(預設為系統時間的現在日期)
+SET @Tx_no = '000'
+SET @lot = '01'
+--判斷借貸
+IF(@sub_type = '資產') SET @DC = '借'
+IF(@sub_type = '負債') SET @DC = '貸'
+IF(@sub_type = '淨值') SET @DC = '貸'
+SET @remark = '科目「' + @sub_name + '」的初始設定金額'
+INSERT INTO GL(Tx_no,Tx_date,lot,sub_name,DC,money,remark) VALUES (@Tx_no,@Tx_date,@lot,@sub_name,@DC,@money,@remark)
+
+END

@@ -1,0 +1,94 @@
+-- =============================================
+-- Author:		MAKOTO
+-- Create date: 2015/10/24
+-- Description:	科目代碼自動編號
+-- =============================================
+ALTER TRIGGER [dbo].[tr_auto_add]
+   ON [dbo].[Subjects]
+   AFTER INSERT
+AS 
+BEGIN
+	SET NOCOUNT ON;
+
+	DECLARE @sub_no nvarchar(50) --識別新存入序號用
+	DECLARE @seq int            --序號增值用
+	DECLARE @new nvarchar(50)    --新序號
+	DECLARE @first nvarchar(50)  --第一筆
+
+	--抓出最後存入的代碼(預設為000)
+	SET @sub_no = (SELECT [sub_no] FROM inserted)
+	SET @first = '001%'
+
+	--判斷是否為新增第一筆
+	IF(NOT EXISTS(SELECT * FROM [dbo].[Subjects] WHERE [sub_no] LIKE @first))
+		BEGIN
+		SET @new = '001'
+		END
+
+	--若為第二筆以上則抓出最大的值後+1
+	ELSE
+		BEGIN
+		--找出最大的編號 (ex. 120)
+		SET @new = (SELECT TOP 1 [sub_no] FROM [dbo].[Subjects] ORDER BY sub_no DESC)
+		--轉成數字後加1 (120 + 1 = 121)
+		SET @seq = CAST( RIGHT(@new,3) AS INT) + 1
+		--轉回文字後前方加三個0 (ex. 000121)
+		SET @new = REPLICATE('0' , 3) + RTRIM(LTRIM(CAST(@seq AS varchar(3))))
+		--取最後三碼 (ex. 121)
+		SET @new = RIGHT(@new,3)
+		END
+	
+	--更新資料表中最後存入的代碼
+	UPDATE [dbo].[Subjects] SET sub_no = @new WHERE sub_no = @sub_no
+END
+
+-- =============================================
+-- Author:		MAKOTO
+-- Create date: 2015/09/25
+-- Description:	交易序號依照日期自動編號
+-- =============================================
+ALTER TRIGGER [dbo].[List_GL_autono]
+   --作用於總帳資料表
+   ON [dbo].[GL]
+   --於新增資料後作用
+   AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+	--宣告變數
+	DECLARE @seq int  --流水號編碼用
+	DECLARE @seq_no varchar(50) ---轉成序號用變數
+	DECLARE @Tx_no varchar(50) --新增暫存區交易序號
+	DECLARE @Tx_date date --新增暫存區交易日期
+	DECLARE @new varchar(50) --新序號
+
+	--從新增暫存區抓取交易序號(新增時為000)與交易日期
+	SET @Tx_no = (SELECT [Tx_no] FROM inserted)
+	SET @Tx_date = (SELECT [Tx_date] FROM inserted)
+	
+	--設定Tx_no(交易序號)為轉換為字元後的交易日期(格式為:yyyymmdd) + %
+	SET @new = CONVERT(varchar(8) , @Tx_date , 112) + '%'
+
+	--判斷總帳資料表中是否有與暫存區相同的交易序號
+	IF (EXISTS(SELECT * FROM [dbo].[GL] WHERE [Tx_no] LIKE @new))
+		BEGIN
+		    --把變數@new的值設定為最後編碼的流水號(把資料行Tx_no做降幕排序->語法為:DESC)
+			SET @new = (SELECT TOP 1 [Tx_no] FROM [dbo].[GL] WHERE [Tx_no] LIKE @new ORDER BY [Tx_no] DESC)
+			--從最新編碼的流水號取出最後3碼轉換為整數後+1
+			SET @seq = CAST ( RIGHT(@new, 3) AS INT) + 1
+			--@seq_no目前型態為字串 -> "000 + 最新序號"
+			SET @seq_no = REPLICATE('0',3) + RTRIM(LTRIM(CAST(@seq As VARCHAR(3))))
+			--@seq_no目前型態為字串 -> 最新序號
+			SET @seq_no = RIGHT(@seq_no , 3)
+			--設定Tx_no為字串型態的日期8碼 + 最新序號
+			SET @new = LEFT(@new , 8) + @seq_no
+		END
+
+	--若不存在則新增日期+編號從001開始的三碼流水號
+	ELSE
+		--交易序號暫存變數值設為@new從左邊開始取8碼後 + 001
+		SET @new = LEFT(@new , 8) + '001'
+	--設定交易序號
+	UPDATE [dbo].[GL] SET [Tx_no] = @new WHERE [Tx_no] = @Tx_no
+END
