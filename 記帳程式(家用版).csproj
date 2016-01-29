@@ -158,14 +158,6 @@
     <Compile Include="3-3_enquiryTx.Designer.cs">
       <DependentUpon>3-3_enquiryTx.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSet.cs">
-      <DependentUpon>DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="0-2_newUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,17 +226,6 @@
     </Compile>
     <EmbeddedResource Include="Reports\Report_BS.rdlc" />
     <EmbeddedResource Include="Reports\Report_PL.rdlc" />
-    <None Include="DataSet.xsc">
-      <DependentUpon>DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSet.xss">
-      <DependentUpon>DataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\DataSources\AccountBook.DataHandling.datasource" />
     <None Include="Properties\DataSources\AccountBook.EditData.datasource" />
     <None Include="Properties\DataSources\AccountBook.GetData.datasource" />
