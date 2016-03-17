@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -104,9 +104,9 @@ namespace DBtools
                 conn.Close();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
                 conn.Close();
                 return false;
             }
@@ -147,27 +147,39 @@ namespace DBtools
         /// <returns></returns>
         static public object[] getAry(string sqlStr)
         {
-            //建立不限長度物件陣列
-            List<object> _ary = new List<object>();
-            //把SqlCommand的查詢結果存至DataReader
-            cmd.CommandText = sqlStr;
-            conn.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.HasRows)
+            try
             {
-                //把查詢結果存入陣列
-                while (dr.Read())
+                //建立不限長度物件陣列
+                List<object> _ary = new List<object>();
+                //把SqlCommand的查詢結果存至DataReader
+                cmd.CommandText = sqlStr;
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
                 {
-                    _ary.Add(dr.GetValue(0).ToString().Trim());
+                    //把查詢結果存入陣列
+                    while (dr.Read())
+                    {
+                        for (int i = 0; i < dr.FieldCount; i++)
+                        {
+                            _ary.Add(dr[i]);
+                        }
+                    }
                 }
+                dr.Close();
+                conn.Close();
+                //建立靜態陣列,長度預設為動態陣列的值
+                object[] ary = new object[_ary.Count];
+                //把動態陣列的所有物件複製到靜態陣列並回傳
+                for (int i = 0; i < _ary.Count; i++) ary[i] = _ary[i];
+                return ary;
             }
-            dr.Close();
-            conn.Close();
-            //建立靜態陣列,長度預設為動態陣列的值
-            object[] ary = new object[_ary.Count];
-            //把動態陣列的所有物件複製到靜態陣列並回傳
-            for (int i = 0; i < _ary.Count; i++) ary[i] = _ary[i];
-            return ary;
+            catch (Exception)
+            {
+                conn.Close();
+                return null;
+            }
+
         }
 
         /// <summary>
@@ -177,16 +189,24 @@ namespace DBtools
         /// <returns></returns>
         static public DataTable getTable(string sqlStr)
         {
-            DataTable dt = new DataTable();
-            //實體化並設定SQL指令
-            cmd.CommandText = sqlStr;
-            //把SqlCommand的查詢結果存至DataReader
-            conn.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            dt.Load(dr);
-            dr.Close();
-            conn.Close();
-            return dt;
+            try
+            {
+                DataTable dt = new DataTable();
+                //實體化並設定SQL指令
+                cmd.CommandText = sqlStr;
+                //把SqlCommand的查詢結果存至DataReader
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                dt.Load(dr);
+                dr.Close();
+                conn.Close();
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
 
         /// <summary>
@@ -311,9 +331,8 @@ namespace DBtools
                 da.Update(dt);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
                 return false;
             }
         }
@@ -332,9 +351,8 @@ namespace DBtools
             sbc.DestinationTableName = TableName;
             conn.Open();
             try { sbc.WriteToServer(dt); }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
                 conn.Close();
                 return false;
             }
